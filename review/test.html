@@ -1,0 +1,31 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      function debounce2(fn, sec) {
+        const context = this || window
+        let timer = null
+        return function (...args) {
+          if (timer) {
+            clearTimeout(timer)
+          }
+          !timer && fn.apply(context, args)
+          timer = setTimeout(() => {
+            timer = null
+            console.log('清除')
+          }, sec * 1000)
+        }
+      }
+
+      const fn = debounce2(() => {
+        console.log('debounce test')
+      }, 3)
+    </script>
+    <button id="test" onclick="fn()">测试</button>
+  </body>
+</html>
