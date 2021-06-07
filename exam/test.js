@@ -1,13 +1,27 @@
-const fake = new Promise((reslove, reject) => {
-  reslove('fake')
-  console.log('---------')
-  reject('fuck')
-  console.log('---------')
-})
+let obj = { a: 10 }
 
-let a = '1312414'
+let value = obj.a
 
-let b = a.substr(0, a.length - 1)
-let c = a.substring(0, a.length - 1)
-console.log(b)
-console.log(c)
+const definedObj = {
+  enumerable: true,
+  configurable: true,
+  get() {
+    console.log('this')
+    console.log(this)
+    return value
+  },
+  set(val) {
+    value = val
+  },
+}
+
+Object.defineProperty(obj, 'a', definedObj)
+
+console.log(obj.a)
+obj.a = 12
+
+definedObj.get = ()=> {
+  return 100
+}
+
+console.log(obj.a)

@@ -30,6 +30,7 @@ function _asyncToGenerator(genFn) {
         reject(error)
         return
       }
+      console.log('try catch')
       if (info.done) {
         resolve(info.value)
       } else {
