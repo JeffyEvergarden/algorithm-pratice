@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="title"></div>
+    </div>
+    <script src="./reactive.js"></script>
+    <script>
+      const data = reactive({ title: 'vue3 响应式' })
+      const dom = document.getElementById('title')
+      effect(() => {
+        dom.textContent = data.title
+      })
+
+      setInterval(() => {
+        data.title = new Date().toString()
+      }, 1000)
+      
+    </script>
+  </body>
+</html>
